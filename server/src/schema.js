@@ -1,8 +1,13 @@
-const { gql } = requestAnimationFrame('apollo-server');
+const { gql } = require('apollo-server');
 
 const typeDefs = gql`
+  type Query {
+    "Queyr to get tracks array for the homepage grid"
+    tracksForHome:[Track!]
+  }
+  
   "A track is group of Mdoules that teaches about a specific topic"
-  type Track{
+  type Track {
     id: ID!
     "the track's title"
     title:String!
@@ -14,6 +19,13 @@ const typeDefs = gql`
     length: Int
     "the number of modules this track contains"
     modulesCount: Int
+  }
+
+  "Author of a complete Track"
+  type Author {
+    id: ID!
+    name: String!
+    photo: String
   }
 `;
 
